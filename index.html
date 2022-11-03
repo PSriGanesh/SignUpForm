@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src = "script.js" defer></script>
+    <title>Document</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0px;
+            font-family: Poppins, sans-serif;
+            background-color: #f9fafb;
+            display: flex;
+            flex-direction: column;
+            height: 100vh; /*Important*/
+        }
+
+        #container {
+
+            flex: 1 0 0;/*Important*/
+            display: flex;
+            margin: 0px;
+        }
+
+        #cont1 {
+            position: relative;
+            height: 100%;
+            background-image: url('./back.jpg');
+            background-position: center;
+            background-size: cover;
+            flex: 1 0 0;
+        }
+
+        #cont2 {
+            flex: 2 0 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        form {
+            background-color: white;
+            box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.25);
+            padding-left: 5vw;
+            padding-right: 5vw;
+            padding-bottom: 50px;
+            margin-right: 0px;
+            margin-bottom: 30px;
+        }
+
+        #details {
+            display: flex;
+            flex-wrap: wrap;
+            column-gap: 30px;
+        }
+
+        #details div {
+            display: flex;
+            flex-direction: column;
+            row-gap: 0px;
+        }
+
+        input {
+            width: 20vw;
+        }
+
+        div>div>h2 {
+            padding-left: 2vw;
+        }
+
+        #bar {
+            position: absolute;
+            top: 15vh;
+            width: 100%;
+            color: white;
+            height: 120px;
+            display: flex;
+            gap: 5px;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        form input {
+            border-radius: 2px;
+            border:2px solid #e5e7ebcb;
+            box-shadow: none;
+        }
+        form input:focus {
+            outline: none;
+            border: 2px solid blue !important;
+        }
+        #logo {
+            display: flex;
+            height: 90px;
+            width: auto;
+        }
+        #sub {
+            margin-left: 40px;
+            background-color: #596D48;
+            color: white;
+            padding: 10px;
+            font-family: 'Poppins',sans-serif;
+            border-radius: 10px;
+            border-width: 0px;
+            font-size: 1.1em;
+        }
+        #pwdlabel {
+            display: flex;
+            width: 20vw;
+            justify-content: space-between;
+        }
+        div > span {
+            color:red;
+            font-size:0.6em;
+            bottom: -20px;
+        }
+        #pwdcontainer {
+            position: relative;
+        }
+        #errcont {
+            position: absolute;
+            bottom: -30px;
+        }
+        #pwdcontainer + div {
+            position: relative;
+        }
+        #passMatch {
+            position: absolute;
+            bottom: -20px;
+        }
+        @media(max-width: 750px){
+            #container {
+                flex-direction: column;
+            }
+            #cont2 {
+                padding-right: 10px;
+            }
+            #cont1 {
+                display: flex;
+                align-items: center;
+            }
+            #bar {
+                position: static;
+                height: 150px;
+            }
+            #logo {
+                height: 100px;
+            }
+            form {
+                align-self: center;
+                width: 350px;
+                padding: 0px;
+                padding-bottom: 50px;
+            }
+            #details {
+                flex-direction: column;
+                align-items: center;
+            }
+            #details div {
+                align-items: center;
+            }
+            form h2 {
+                text-align: center;
+            }
+            input {
+            width: 200px;
+            }
+            #sub {
+                margin: 0px auto;
+            }
+        }
+        @media(max-width: 940px) {
+            #errcont {
+                bottom: -40px;
+            }
+        }
+        @media(max-width: 811px) {
+            #errcont {
+                bottom: -55px;
+            }
+            form {
+                padding-bottom: 60px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <div id="cont1">
+            <div id="bar">
+                <div><img id="logo" src="./odin.png"></div>
+                <div style="font-size: 3rem;">Odin</div>
+            </div>
+        </div>
+        <div id="cont2">
+            <div>
+                <h2>This is not a real online service! You know you need something like this in your life to realize
+                    your deepest dreams.</h2>
+                <h2>Sign up <em>now</em> to get started</h2>
+                <h2>You <em>know</em> you want to.</h2>
+            </div>
+            <br>
+            <form id="myForm" onsubmit="return validateForm();">
+                <h2>Let's Do This!</h2>
+                <div id="details">
+                    <div>
+                        <label for="fname">First Name</label>
+                        <input type="text" name="fname" id="fname" required>
+                    </div>
+                    <div>
+                        <label for="lname">Last Name</label>
+                        <input type="text" name="lname" id="lname">
+                    </div>
+                    <div>
+                        <label for="email">E-mail</label>
+                        <input type="email" name="email" id="email" required>
+                    </div>
+                    <div>
+                        <label for="phno">Phone Number</label>
+                        <input type="number" name="phno" id="phno" min="999999999" required>
+                    </div>
+                    <div id = "pwdcontainer">
+                        <label for="pwd" id = "pwdlabel">
+                            <div>Password</div>
+                            <div id="pwdStatus"></div>
+                        </label>
+                        <input type="password" name="pwd" id="pwd" required>
+                        <div id="errcont">
+                            <span id="lenErr">Password must be atleast 6 characters</span>
+                            <span id="numErr">Password must contain a number</span>
+                        </div>
+                    </div>
+                    <div>
+                        <label for="cpwd">Confirm Password</label>
+                        <input type="password" name="cpwd" id="cpwd" required>
+                        <span id="passMatch">Passwords do not match</span>
+                    </div>
+                </div>
+            </form>
+            <input type="submit" form="myForm" id="sub" value="Create Account">
+        </div>
+    </div>
+</body>
+
+</html>
